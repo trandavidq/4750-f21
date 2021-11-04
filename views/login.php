@@ -26,6 +26,14 @@
         <label>Password</label>
         <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
       </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number">
+      </div>
       <button type="submit" class="btn btn-primary" style="margin-top: 50px;">Submit</button>
     </form>
   </div>
