@@ -16,8 +16,12 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     
     
     if(mysqli_num_rows($query_result)!=0){
-        if(strcmp($password,mysqli_fetch_assoc($query_result)['password'])==0){
-            //Successful authentication   
+        if(password_verify($password,mysqli_fetch_assoc($query_result)['password'])){
+            //Successful authentication
+            echo 'Successfully authenticated!' . '<br>';
+        }
+        else{
+            echo 'Found, but wrong password' . '<br>';
         }
     }    
     else{
