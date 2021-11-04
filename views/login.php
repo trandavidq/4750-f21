@@ -13,10 +13,14 @@
 <body>
   <h1>Notemates Login</h1>
   <div id="login-form">
-    <form>
+    <form action="../db/auth.php" method="POST">
       <div class="form-group">
-        <label for="exampleInputEmail1">Username</label>
-        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+        <label>First Name</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name">
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter last name">
       </div>
       <div class="form-group">
         <label>Password</label>
@@ -25,6 +29,7 @@
       <button type="submit" class="btn btn-primary" style="margin-top: 50px;">Submit</button>
     </form>
   </div>
+  
 </body>
 
 </html>
