@@ -9,9 +9,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
     $password = $_POST['password'];
-    $hashed_password = password_hash($_POST['password'],PASSWORD_BCRYPT);
+    $hashed_password = md5($_POST['password']);
     
-
+    // echo $hashed_password;
+    
     $authenticate_query = "SELECT * FROM User WHERE firstName= '$firstName' and lastName = '$lastName'";
     $query_result = mysqli_query($conn,$authenticate_query);
     
@@ -19,12 +20,18 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     if(mysqli_num_rows($query_result)!=0){
         if(strcmp($password,mysqli_fetch_assoc($query_result)['password'])==0){
             //Successful authentication
+            
         }
     }    
     else{
         //echo 'registering user';
-        $insert_query = "INSERT INTO User (password,firstName,lastName) VALUES ('$password','$firstName','$lastName');";
-        $query_insert = mysqli_query($conn,$insert_query);
+        $insert_query = $conn->prepare("INSERT INTO User (password,firstName,lastName) VALUES (?,?,?);");
+        echo $hashed_password;
+        $insert_query->bind_param("sss",$password,$firstName,$lastName);
+        echo 'Registering user';
+        if($insert_query->execute()){
+            echo 'Registered user successfully!';
+        }
     }
         
 }
