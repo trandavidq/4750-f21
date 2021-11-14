@@ -54,7 +54,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         }
         
     }
+    $_SESSION['firstName'] = $firstName;
         
 }
+
+header('Location: ../views/home.php');
+exit;
 
 ?>
