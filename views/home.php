@@ -4,6 +4,11 @@
         header('Location: login.php');
         exit;
     }
+    /**
+     * bind
+     * prepare
+     * execute
+     */
 ?>
 
 <!doctype html>
