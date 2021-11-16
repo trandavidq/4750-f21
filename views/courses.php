@@ -1,5 +1,17 @@
 <!doctype html>
 <html lang="en">
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require_once '../coursesAPI.php';
+session_start();
+//Check that user is logged in
+if (!isset($_SESSION["firstName"])){
+  header('Location: login.php');
+  exit;
+}
+?>
 
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -17,10 +29,24 @@
 </nav>
 <h1 class="mx-3"> Courses </h1>
 <div class="searchbar">
-    <form action="" method="POST">
-        <h3 style="margin-right: 100px;">Course:</h3>
-        <input type="text" name="course_name">
+    <form action="../db/addCourses.php" method="POST">
+        <h3 style="margin-right: 100px;">Choose a course:</h3>
+        <label for="">Subject: </label>
+        <select name="Subject" id="">
+          <?php
+          //PHP code to determine all dept_tag dropdowns
+          ?>
+        </select>
 
+        <label for="">Course name: </label>
+        <select name="course_name" id="">
+         <?php
+         //PHP code to determine all dropdowns
+         ?>
+        </select>
+          
+        
+        <input type="text" name="course_name">
         <button class="btn btn-success" type="submit">Add</button>
 
     </form>
