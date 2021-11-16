@@ -7,10 +7,10 @@ error_reporting(E_ALL);
 require_once '../coursesAPI.php';
 session_start();
 //Check that user is logged in
-if (!isset($_SESSION["firstName"])){
-  header('Location: login.php');
-  exit;
-}
+// if (!isset($_SESSION["firstName"])){
+//   header('Location: login.php');
+//   exit;
+// }
 ?>
 
 <head>
@@ -34,7 +34,10 @@ if (!isset($_SESSION["firstName"])){
         <label for="">Subject: </label>
         <select name="Subject" id="">
           <?php
-          //PHP code to determine all dept_tag dropdowns
+          
+          foreach($courses as $key => $value){
+            echo "<option value = '$key'> $key </option>" ;
+          }
           ?>
         </select>
 
@@ -42,6 +45,7 @@ if (!isset($_SESSION["firstName"])){
         <select name="course_name" id="">
          <?php
          //PHP code to determine all dropdowns
+         //Dropdown conditional upon department chosen
          ?>
         </select>
           
