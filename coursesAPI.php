@@ -23,14 +23,10 @@ foreach($data->{'class_schedules'}->{'records'} as $course){
         array_push($courses[$dept_tag],$course_name);
     }
 }
-$keys = array_keys($courses);
-for($i = 0; $i < count($courses); $i++) {
-    echo $keys[$i] . ": ";
-    foreach($courses[$keys[$i]] as $key => $value) {
-        echo $key . " : " . $value . "<br>";
-    }
-    echo "}<br>";
+foreach($courses as $key => $value){
+    $courses[$key] = array_unique($courses[$key]);
 }
+
 // for($i=0;$i<count($courses);$i++){
 //     foreach
 // }
