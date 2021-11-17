@@ -14,7 +14,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $authenticate_query = "SELECT * FROM User WHERE firstName= '$firstName' and lastName = '$lastName'";
     $query_result = mysqli_query($conn,$authenticate_query);
     
-    
     if(mysqli_num_rows($query_result)!=0){
         if(password_verify($password,mysqli_fetch_assoc($query_result)['password'])){
             //Successful authentication
@@ -52,10 +51,9 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $insert_user_phone_query->execute();
 
         }
-        
     }
     $_SESSION['firstName'] = $firstName;
-        
+    $_SESSION['userID'] = $user_id;
 }
 
 header('Location: ../views/home.php');
