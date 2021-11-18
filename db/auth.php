@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $lastName = $_POST['lastName'];
     $password = $_POST['password'];
     $hashed_password = password_hash($_POST['password'],PASSWORD_DEFAULT);
-    
+    $user_id = '';
     $authenticate_query = "SELECT * FROM User WHERE firstName= '$firstName' and lastName = '$lastName'";
     $query_result = mysqli_query($conn,$authenticate_query);
     

@@ -3,23 +3,18 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-$DATABASE_HOST = 'localhost';
-$DATABASE_USER = 'root';
-$DATABASE_PASS = '';
-$DATABASE_NAME = 'Notemates';
+require_once '../db/db_settings.php';
 
-//Create connection to database
-$conn = mysqli_connect($DATABASE_HOST,$DATABASE_USER,$DATABASE_PASS,$DATABASE_NAME);
 
 session_start();
-if (!isset($_SESSION["userID"])){
+if (!isset($_SESSION['userID'])){
   header('Location: login.php');
   exit;
 }
 $loggedInID = $_SESSION['userID'];
-$sql1 = "SELECT firstName, lastName FROM User WHERE userID = '$loggedInID'";
-$user_query = mysqli_query($conn,$sql1);
-$user = mysqli_fetch_row($user_query);
+// $sql1 = "SELECT firstName, lastName FROM User WHERE userID = '$loggedInID'";
+// $user_query = mysqli_query($conn,$sql1);
+// $user = mysqli_fetch_row($user_query);
 ?>
 
 <!doctype html>
