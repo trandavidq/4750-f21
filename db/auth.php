@@ -18,6 +18,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         if(password_verify($password,mysqli_fetch_assoc($query_result)['password'])){
             //Successful authentication
             echo 'Successfully authenticated!' . '<br>';
+            $select_user_query = $conn->prepare("SELECT * FROM User WHERE firstName = ? and lastName = ?  ");
+            $select_user_query ->bind_param('ss',$firstName,$lastName);
+            $select_user_query ->execute();
+            $user_id = $select_user_query ->get_result()->fetch_assoc()['userID'];
         }
         else{
             echo 'Found, but wrong password' . '<br>';
