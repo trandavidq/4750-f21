@@ -1,3 +1,22 @@
+<?php
+//Update User
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require_once '../db/db_settings.php';
+
+
+session_start();
+if (!isset($_SESSION['userID'])){
+  header('Location: login.php');
+  exit;
+}
+$loggedInID = $_SESSION['userID'];
+// $sql1 = "SELECT firstName, lastName FROM User WHERE userID = '$loggedInID'";
+// $user_query = mysqli_query($conn,$sql1);
+// $user = mysqli_fetch_row($user_query);
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -13,14 +32,14 @@
 <body>
   <h1>Profile</h1>
   <div id="profile-form">
-    <form action="../db/getProfile.php" method="POST">
+    <form action="../db/updateProfile.php" method="POST">
       <div class="form-group">
         <label>First Name</label>
-        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name" value="<?php echo $row['firstName']; ?>">
+        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name" value="<?php echo $user[0]; ?>">
       </div>
       <div class="form-group">
         <label>Last Name</label>
-        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter last name" value="<?php echo $row['lastName']; ?>">
+        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter last name" value="<?php echo $user[1]; ?>">
       </div>
       <div class="form-group">
         <label>Email</label>

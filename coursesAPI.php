@@ -2,7 +2,8 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-require_once './db/db_settings.php';
+//require_once './db/db_settings.php';
+require_once '/Applications/XAMPP/xamppfiles/htdocs/CS4750_project/db/db_settings.php';
 $url = 'https://api.devhub.virginia.edu/v1/courses';
 $data = json_decode(file_get_contents($url));
 
