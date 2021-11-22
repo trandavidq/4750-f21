@@ -13,7 +13,7 @@
 <body>
   <h1>New Document</h1>
   <div id="doc-upload-form">
-    <form action="" method="POST">
+    <form action="../db/uploadDocument.php" method="POST">
       <div class="form-group">
         <label>Document Name</label>
         <input type="text" class="form-control" id="docName" name="docName" placeholder="Enter document name">
