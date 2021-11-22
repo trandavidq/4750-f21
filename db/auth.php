@@ -56,8 +56,13 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
         }
     }
+    //Retrieve phone and email
+    
     $_SESSION['firstName'] = $firstName;
+    $_SESSION['lastName'] = $lastName;
     $_SESSION['userID'] = $user_id;
+    $_SESSION['email'] = $_POST['email'];
+    $_SESSION['phone'] = $_POST['phone'];
 }
 
 header('Location: ../views/home.php');

@@ -21,9 +21,9 @@ session_start();
   <meta name="Courses" content="Page should allow for searching of courses">
   <link rel="stylesheet" href="../styles/courses.css">
 </head>
-    
+
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
       <a class="navbar-brand" href="{% url 'polls:index' %}">Notemates.</i></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,75 +47,53 @@ session_start();
       </div>
     </div>
   </nav>
-<h1 class="mx-3"> Courses </h1>
-<div class="searchbar">
+  <h1 class="mx-3"> Courses </h1>
+  <div class="searchbar">
     <form action="../db/addCourses.php" method="POST">
-        <h3 style="margin-right: 100px;">Choose a course, <?php echo $_SESSION['firstName'] . ' with user id' . $_SESSION['userID']?>:</h3>
-        <label for="">Course: </label>
-        <select name="subject" id="subject">
-          <?php
-          //Grab course number
-          foreach($courses as $key => $value){
-            foreach($courses[$key] as $name){
-              //SQL select courseID
-              
-              $get_courseID_query = $conn->prepare("SELECT DISTINCT courseID FROM Courses WHERE department = ? AND courseName = ? ;");
-              $get_courseID_query ->bind_param("ss", $key,$name);
-              $get_courseID_query ->execute();
-              $result = $get_courseID_query ->get_result();
-              $courseID = $result ->fetch_array(MYSQLI_NUM)[0];
-
-              //var_dump($result);
-              $full_course_name = $courseID. ': ' . $name;
-              echo "<option value = '$courseID'> $full_course_name </option>" ;
-            }
-              
-          }
-            
-          
-          ?>
-          
-        </select>
-        
-        
-          
-        
-        
-        <button class="btn btn-success" type="submit">Add</button>
-
+      <h3 style="margin-right: 100px;">Choose a course, <?php echo $_SESSION['firstName'] . ' with user id' . $_SESSION['userID'] ?>:</h3>
+      <label for="">Course: </label>
+      <select name="subject" id="subject">
+        <?php
+        //Grab course number
+        $get_courseID_query = $conn->prepare("SELECT courseID, courseName FROM Courses;");
+        $get_courseID_query->execute();
+        $result = $get_courseID_query->get_result();
+        while ($class = $result->fetch_array(MYSQLI_NUM)) {
+          $optionName = $class[0] . ': ' . $class[1];
+          echo "<option value = '$class[0]'> $optionName </option>";
+        }
+        ?>
+      </select>
+      <button class="btn btn-success" type="submit">Add</button>
     </form>
-    
-    
-</div>
-<hr>
-<div>
-  <!-- Display all current courses -->
-  Current list of courses:
-  <br>
-  <?php
-    $get_taken_courses_query = $conn ->prepare('SELECT courseID from takes WHERE userID = ?');
-    $get_taken_courses_query -> bind_param("i",$_SESSION['userID']);
-    $get_taken_courses_query ->execute();
-    $result  = $get_taken_courses_query -> get_result();
+  </div>
+
+  <hr>
+  <div>
+    <!-- Display all current courses -->
+    Current list of courses:
+    <br>
+    <?php
+    $get_taken_courses_query = $conn->prepare('SELECT courseID from takes WHERE userID = ?');
+    $get_taken_courses_query->bind_param("i", $_SESSION['userID']);
+    $get_taken_courses_query->execute();
+    $result  = $get_taken_courses_query->get_result();
     //Result is an array of courseIDs
     //var_dump($result);
-    while($row = $result->fetch_array()) {
-      echo $row[0] . '<br>';
+    while ($row = $result->fetch_array()) {
+      $courseName = $row[0];
+      echo '<div class="card" style="width: 70rem">' . $courseName . '</div>';
     }
-  
-
-  ?>
-  
-</div>
-
+    ?>
+  </div>
 </body>
 
 <footer>
-    <div class="card fixed-bottom">
-        <div class="card-header">
-            <small> &copy; Copyright 2021, Notemates Team. All Rights Reserved</small>
-        </div>
+  <div class="card fixed-bottom">
+    <div class="card-header">
+      <small> &copy; Copyright 2021, Notemates Team. All Rights Reserved</small>
     </div>
+  </div>
 
 </footer>
 
