@@ -16,6 +16,6 @@ if(mysqli_connect_errno()){
     echo "Failed to connect to DB";
 }
 else{
-    echo "Connected to DB!" . "</br>";
+    //echo "Connected to DB!" . "</br>";
 }
 ?>

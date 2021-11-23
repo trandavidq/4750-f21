@@ -1,3 +1,20 @@
+<?php
+//Update User
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require_once '../db/db_settings.php';
+
+
+session_start();
+if (!isset($_SESSION['userID'])) {
+  header('Location: login.php');
+  exit;
+}
+$userID = $_SESSION['userID'];
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -11,29 +28,55 @@
 </head>
 
 <body>
-  <h1>Profile</h1>
-  <div id="profile-form">
-    <form action="../db/getProfile.php" method="POST">
-      <div class="form-group">
-        <label>First Name</label>
-        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name" value="<?php echo $row['firstName']; ?>">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top" style="margin-bottom: 100px;">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'polls:index' %}">Notemates.</i></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="./home.php">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./courses.php">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./profile.php">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Document Center</a>
+          </li>
+        </ul>
       </div>
-      <div class="form-group">
-        <label>Last Name</label>
-        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter last name" value="<?php echo $row['lastName']; ?>">
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" value="<?php echo $row['email']; ?>">
-      </div>
-      <div class="form-group">
-        <label>Phone Number</label>
-        <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number" value="<?php echo $row['phoneNumber']; ?>">
-      </div>
-      <button type="submit" class="btn btn-primary" style="margin-top: 50px;">Update</button>
-    </form>
+    </div>
+  </nav>
+  <div class="card" style="width : 58rem; margin: 0 auto; float: none; margin-bottom: 10px;">
+    <h1>Profile:</h1>
+    <div name='name'>
+      <!-- Name -->
+      <h4>Name: </h4>
+      <p><?php echo ($_SESSION['firstName'] . ' ' . $_SESSION['lastName']); ?></p>
+    </div>
+    <div>
+      <h4>Email: </h4>
+      <p><?php echo $_SESSION['email']; ?></p>
+    </div>
+    <div>
+      <h4>Phone: </h4>
+      <p><?php echo $_SESSION['phone']; ?></p>
+    </div>
+    <a href="editProfile.php" style="display: inline-block">
+      <button class="btn btn-success">Edit</button>
+    </a>
+
+
+
   </div>
-  
+
+
+
 </body>
 
 </html>
