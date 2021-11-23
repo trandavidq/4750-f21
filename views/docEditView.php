@@ -50,18 +50,29 @@
                 <h3><b>Document Information</b></h3>
                 <a href="docsearch.php">Back To Document Search</a>
             </div>
-            <form action="./docEditView.php">
-              <button type="submit" class="btn btn-primary" style="margin-top: 10px; background-color: green; border-color: green;">Edit</button>
-            </form>
-            <form action="../db/deleteDoc.php">
-              <button type="submit" class="btn btn-primary" style="margin-top: 10px; background-color: red; border-color: red;" onclick="return confirm('Are you sure you want to delete this document?');">Delete</button>
-            </form>
-            <p style="margin-top: 20px;">Subject: <?php echo $_SESSION['selectedSubject'] ?></p>
-            <p>Course: <?php echo $_SESSION['selectedCourse'] ?></p>
-            <p>Name: <?php echo $_SESSION['selectedName'] ?></p>
-            <p>Date: <?php echo $_SESSION['selectedDate'] ?></p>
-            <form action="../db/downloadFile.php">
-              <button type="submit" class="btn btn-primary">Download</button>
+            <div id="docEditForm">
+                <form action="../db/docEdit.php" method="POST">
+                    <div class="form-group">
+                        <label>Subject </label>
+                        <input type="text" class="form-control" id="subjectName" name="subjectName" placeholder=<?php echo $_SESSION['selectedSubject'] ?>>
+                    </div>
+                    <div class="form-group">
+                        <label>Course </label>
+                        <input type="text" class="form-control" id="courseName" name="courseName" placeholder=<?php echo $_SESSION['selectedCourse'] ?>>
+                    </div>
+                    <div class="form-group">
+                        <label>Document Name </label>
+                        <input type="text" class="form-control" id="docName" name="docName" placeholder=<?php echo $_SESSION['selectedName'] ?>>
+                    </div>
+                    <div class="form-group">
+                        <label>Date </label>
+                        <input type="text" class="form-control" id="docDate" name="docDate" placeholder=<?php echo $_SESSION['selectedDate'] ?>>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Save</button>
+                </form>
+            </div>
+            <form action="./docview.php">
+              <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Cancel</button>
             </form>
         </div>
       </div>

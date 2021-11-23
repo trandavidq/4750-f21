@@ -1,10 +1,4 @@
-<?php
-    session_start();
-    if (!isset($_SESSION["firstName"])){
-        header('Location: login.php');
-        exit;
-    }
-?>
+<?php include_once("../db/isLoggedIn.php") ?>
 
 <!doctype html>
 <html lang="en">
