@@ -9,6 +9,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
     $password = $_POST['password'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
     $hashed_password = password_hash($_POST['password'],PASSWORD_DEFAULT);
     $user_id = '';
     $authenticate_query = "SELECT * FROM User WHERE firstName= '$firstName' and lastName = '$lastName'";
@@ -18,13 +20,15 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         if(password_verify($password,mysqli_fetch_assoc($query_result)['password'])){
             //Successful authentication
             echo 'Successfully authenticated!' . '<br>';
-            $select_user_query = $conn->prepare("SELECT * FROM User WHERE firstName = ? and lastName = ?  ");
-            $select_user_query ->bind_param('ss',$firstName,$lastName);
+            $select_user_query = $conn->prepare("SELECT * FROM User, User_email, User_phone 
+            WHERE firstName = ? and lastName = ? and email = ? and phoneNumber = ?;");
+            $select_user_query ->bind_param('ssss',$firstName,$lastName,$email,$phone);
             $select_user_query ->execute();
             $user_id = $select_user_query ->get_result()->fetch_assoc()['userID'];
         }
         else{
             echo 'Found, but wrong password' . '<br>';
+            header('Location: ../views/login.php');
         }
     }    
     else{
