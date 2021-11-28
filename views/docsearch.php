@@ -97,7 +97,7 @@ $userID = $_SESSION['userID'];
 // echo $course;
 //WHERE courseID LIKE ? 
 $get_doc_query = $conn->prepare(
-  "SELECT d.documentID from belongs_to b , Document d
+  "SELECT DISTINCT d.documentID from belongs_to b , Document d
   WHERE b.userID=d.userID  AND b.userID = $userID
   AND b.courseID LIKE ? AND d.dateCreated >= ?
   AND d.dateCreated <= ?");
