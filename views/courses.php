@@ -85,7 +85,17 @@ session_start();
     //var_dump($result);
     while ($row = $result->fetch_array()) {
       $courseName = $row[0];
-      echo '<div class="card" style="width: 70rem">' . $courseName . '</div>';
+      
+      echo 
+      "<form action=\"../db/removeCourses.php\" method= \"POST\">
+        <div class=\"card\" style=\"width: 58rem;\">
+          <div class=\"card-body\">
+            <h5 class=\"card-title\">$courseName</h5>
+            <input type=\"hidden\" name=\"courseName\" value= \"$courseName\">
+            <button class=\"btn btn-danger\" type=\"submit\">Remove course</button>
+          </div>
+        </div>
+      </form>";
     }
     ?>
   </div>
