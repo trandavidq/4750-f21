@@ -16,28 +16,32 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-      <a class="navbar-brand" href="{% url 'polls:index' %}">Notemates.</i></a>
+      <a class="navbar-brand" href="./home.php">Notemates.</i></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="./home.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Courses</a>
+            <a class="nav-link" href="./courses.php">Courses</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="./profile.php">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Document Center</a>
+            <a class="nav-link" href="./docupload.php">Document Upload</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./docsearch.php">Document Search</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+
   <div class="card" style="margin-top:15px; margin-bottom:15px;">
   <div class="card-header" style="display: flex; justify: space-between;">
     <h1><b>Document Viewer</b></h1>
@@ -50,17 +54,35 @@
                 <h3><b>Document Information</b></h3>
                 <a href="docsearch.php">Back To Document Search</a>
             </div>
-            <form action="./docEditView.php">
+            <?php 
+              include_once '../db/db_settings.php';
+
+              if (isset($_GET['documentID'])){
+                $id = $_GET['documentID'];
+                $userid = $_SESSION['userID'];
+                $query = "SELECT dateCreated, displayName FROM Document WHERE documentID = $id";
+                $courseQuery = "SELECT courseID FROM belongs_to WHERE documentID = $id";
+                $result = mysqli_query($conn,$query) or die('Error, query failed');
+                list($date, $dName) = mysqli_fetch_array($result);
+                $result2 = mysqli_query($conn,$courseQuery) or die('Error, query failed');
+                list($courseID) = mysqli_fetch_array($result2);
+              }
+              else {
+                header("Location: ./docsearch.php");
+              }
+            ?>
+            <form action="docEditView.php?documentID=<?php echo $id ?>" method="post">
               <button type="submit" class="btn btn-primary" style="margin-top: 10px; background-color: green; border-color: green;">Edit</button>
             </form>
-            <form action="../db/deleteDoc.php">
+            <form action="../db/deleteDoc.php" method="post">
+              <input type="hidden" name="documentID" value="<?=$id?>" />
               <button type="submit" class="btn btn-primary" style="margin-top: 10px; background-color: red; border-color: red;" onclick="return confirm('Are you sure you want to delete this document?');">Delete</button>
             </form>
-            <p style="margin-top: 20px;">Subject: <?php echo $_SESSION['selectedSubject'] ?></p>
-            <p>Course: <?php echo $_SESSION['selectedCourse'] ?></p>
-            <p>Name: <?php echo $_SESSION['selectedName'] ?></p>
-            <p>Date: <?php echo $_SESSION['selectedDate'] ?></p>
-            <form action="../db/downloadFile.php">
+            <p style="margin-top: 20px;">Course: <?php echo $courseID ?></p>
+            <p>Name: <?php echo $dName ?></p>
+            <p>Date: <?php echo $date ?></p>
+            <form action="../db/downloadFile.php" method="post">
+              <input type="hidden" name="documentID" value="<?=$id?>" />
               <button type="submit" class="btn btn-primary">Download</button>
             </form>
         </div>

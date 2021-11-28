@@ -11,11 +11,35 @@
 </head>
     
 <body>
-<nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1">Notemates</span>
-  </div>
-</nav>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="./home.php">Notemates.</i></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="./home.php">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./courses.php">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./profile.php">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./docupload.php">Document Upload</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./docsearch.php">Document Search</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
 <h1 class="mx-3"> Document Search </h1>
 <form class="mx-3 my-3" method="POST" action = <?php echo $_SERVER['PHP_SELF'];?> style="background-color: rgba(155,155,155,0.5);color:white; pading:50px;text-align:center; border-radius:25px">
     <h2 class="mx-3"> Filters </h2>
@@ -46,9 +70,25 @@ error_reporting(E_ALL);
 require_once '../db/db_settings.php';
 session_start();
 
-$startDate = $_POST['startdate'];
-$endDate = $_POST['enddate'];
-$course = $_POST['course'];
+if (!isset($_POST['startdate'])){
+  $startDate = "2000-11-1";
+}
+else {
+  $startDate = $_POST['startdate'];
+}
+if (!isset($_POST['enddate'])){
+  $endDate = "2050-11-20";
+}
+else {
+  $endDate = $_POST['enddate'];
+}
+if (!isset($_POST['course'])){
+  $courseQuery = '%';
+}
+else {
+  $course = $_POST['course'];
+  $courseQuery = $course . '%';
+}
 $userID = $_SESSION['userID'];
 
 // echo $_SERVER['REQUEST_METHOD']=='POST' ? 'post':'none';
@@ -56,13 +96,20 @@ $userID = $_SESSION['userID'];
 // echo $endDate;
 // echo $course;
 //WHERE courseID LIKE ? 
-$courseQuery = $course . '%';
 $get_doc_query = $conn->prepare(
+  "SELECT d.documentID from belongs_to b , Document d
+  WHERE b.userID=d.userID  AND b.userID = $userID
+  AND b.courseID LIKE ? AND d.dateCreated >= ?
+  AND d.dateCreated <= ?");
+  $get_doc_query->bind_param("sss",$courseQuery,$startDate,$endDate);
+/*
     "SELECT d.documentID from belongs_to b , Document d
      WHERE b.userID=d.userID  AND b.userID = 29
      AND b.courseID LIKE ? AND d.dateCreated >= ?
      AND d.dateCreated <= ?");
-$get_doc_query->bind_param("sss",$courseQuery,$startDate,$endDate);
+     $get_doc_query->bind_param("sss",$courseQuery,$startDate,$endDate);
+*/
+//$get_doc_query->bind_param("s",$courseQuery);
 $get_doc_query ->execute();
 
 
@@ -80,7 +127,6 @@ while($row = $result->fetch_array(MYSQLI_NUM)){
             <small> &copy; Copyright 2021, Notemates Team. All Rights Reserved</small>
         </div>
     </div>
-
 </footer>
 
 </html>

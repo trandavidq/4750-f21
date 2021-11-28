@@ -23,9 +23,9 @@ session_start();
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-      <a class="navbar-brand" href="{% url 'polls:index' %}">Notemates.</i></a>
+      <a class="navbar-brand" href="./home.php">Notemates.</i></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -41,7 +41,10 @@ session_start();
             <a class="nav-link" href="./profile.php">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Document Center</a>
+            <a class="nav-link" href="./docupload.php">Document Upload</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./docsearch.php">Document Search</a>
           </li>
         </ul>
       </div>
@@ -86,6 +89,10 @@ session_start();
     }
     ?>
   </div>
+
+  <form action="../db/exportCourses.php">
+      <button type="submit" class="btn btn-primary">Download Course List</button>
+  </form>
 </body>
 
 <footer>

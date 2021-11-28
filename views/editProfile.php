@@ -28,30 +28,34 @@ $userID = $_SESSION['userID'];
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top" style="margin-bottom: 100px;">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'polls:index' %}">Notemates.</i></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="./home.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./courses.php">Courses</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./profile.php">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Document Center</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="./home.php">Notemates.</i></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="./home.php">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./courses.php">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./profile.php">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./docupload.php">Document Upload</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./docsearch.php">Document Search</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
     <div class="card" style="width : 58rem; margin: 0 auto; float: none; margin-bottom: 10px;">
         <h1>Edit profile:</h1>
         <form action="../db/editProfile.php" method="POST">

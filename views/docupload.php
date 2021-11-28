@@ -11,9 +11,39 @@
 </head>
 
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="./home.php">Notemates.</i></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="./home.php">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./courses.php">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./profile.php">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./docupload.php">Document Upload</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./docsearch.php">Document Search</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="card" style="width : 58rem; margin: 0 auto; float: none; margin-bottom: 10px; margin-top: 10px; background-color: LightGray;">
   <h1>New Document</h1>
   <div id="doc-upload-form">
-    <form action="" method="POST">
+    <form action="../db/uploadDocument.php" method="POST" enctype="multipart/form-data">
       <div class="form-group">
         <label>Document Name</label>
         <input type="text" class="form-control" id="docName" name="docName" placeholder="Enter document name">
@@ -24,20 +54,29 @@
       </div>
       <div class="form-group">
         <label>Course Name</label>
-        <input type="password" class="form-control" id="courseName" name="courseName" placeholder="Enter course name">
+        <input type="text" class="form-control" id="courseName" name="courseName" placeholder="Enter course name">
       </div>
-      <div class="form-group">
+      <div style="margin-top: 10px; margin-bottom: 10px; "class="form-group">
         <label>Date</label>
-        <input type="date" class="form-control" id="date" name="date" value="2021-01-01">
+        <input type="date" id="date" name="date" value= "09/01/2021" min="1950-01-01" max="2050-01-01"/>
       </div>
       <div class="form-group">
         <label>Upload document</label>
-        <input type="file" accept=".pdf,.jpg" class="form-control" id="document" name="document">
+        <input type="file" class="form-control" id="file" name="file">
       </div>
       <button type="submit" class="btn btn-primary" style="margin-top: 50px;">Save</button>
     </form>
   </div>
+</div>
   
 </body>
+
+<footer>
+    <div class="card fixed-bottom">
+        <div class="card-header">
+            <small> &copy; Copyright 2021, Notemates Team. All Rights Reserved</small>
+        </div>
+    </div>
+</footer>
 
 </html>
