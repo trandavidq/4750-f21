@@ -4,12 +4,19 @@
 
     $id = $_POST["documentID"];
     $userid = $_SESSION['userID'];
-    echo $id;
-    echo $userid;
-    $query2 = "DELETE FROM belongs_to WHERE documentID = $id AND userID = $userid";
-    $result2 = mysqli_query($conn,$query2) or die('Error, belongs query failed');
-    $query = "DELETE FROM Document WHERE documentID = $id AND userID = $userid";
-    $result = mysqli_query($conn,$query) or die('Error, doc query failed');
+    mysqli_begin_transaction($conn);
+    try {
+        $query2 = $conn->prepare("DELETE FROM belongs_to WHERE documentID = ? AND userID = ?");
+        $query2->bind_param("ii", $id, $userid);
+        $query2->execute();
+        $query = $conn->prepare("DELETE FROM Document WHERE documentID = ? AND userID = ?");
+        $query->bind_param("ii", $id, $userid);
+        $query->execute();
+        mysqli_commit($conn);
+    } catch (mysqli_sql_exception $exception) {
+        mysqli_rollback($conn);
+        throw $exception;
+    }
     header("Location: ../views/docsearch.php");
     mysqli_close($conn);
     exit;

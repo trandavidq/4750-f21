@@ -1,5 +1,4 @@
 <?php include_once("../db/isLoggedIn.php") ?>
-<?php include_once("../db/dummyDoc.php") ?>
 
 <!doctype html>
 <html lang="en">

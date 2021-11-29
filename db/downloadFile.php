@@ -6,12 +6,15 @@
 
     $userid = $_SESSION['userID'];
     $docID = $_POST["documentID"];
-    $fileName_query = "SELECT fileName FROM Document WHERE userID = $userid AND documentID = $docID";
-    $fileNameRes = mysqli_query($conn, $fileName_query);
+    $fileName_query = $conn->prepare("SELECT fileName FROM Document WHERE userID = ? AND documentID = ?");
+    $fileName_query->bind_param("ii", $userid, $docID);
+    $fileName_query->execute();
+    $fileNameRes = $fileName_query->get_result();
     list($fName) = mysqli_fetch_array($fileNameRes);
-    $query = "SELECT * " .
-            "FROM File WHERE fileName = '$fName'";
-    $result = mysqli_query($conn,$query) or die('Error, query failed');
+    $query = $conn->prepare("SELECT * FROM File WHERE fileName = ?");
+    $query->bind_param("s",$fName);
+    $query->execute();
+    $result = $query->get_result();
     list($fileName, $fileType, $fileContents) = mysqli_fetch_array($result);
     header("Content-type: $fileType");
     header("Content-Disposition: attachment; filename=$fileName");

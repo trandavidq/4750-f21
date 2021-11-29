@@ -65,11 +65,15 @@
               else {
                 header("Location: ./docsearch.php");
               }
-              $doc_query = "SELECT displayName, dateCreated FROM Document WHERE userID = $userid AND documentID = $id";
-              $result = mysqli_query($conn, $doc_query) or die("Error, query failed");
+              $doc_query = $conn->prepare("SELECT displayName, dateCreated FROM Document WHERE userID = ? AND documentID = ?");
+              $doc_query->bind_param("ii",$userid,$id);
+              $doc_query->execute();
+              $result = $doc_query->get_result();
               list($docName, $date) = mysqli_fetch_array($result);
-              $course_query = "SELECT courseID FROM belongs_to WHERE userID = $userid AND documentID = $id";
-              $result2 = mysqli_query($conn, $course_query) or die("Error, query failed");
+              $course_query = $conn->prepare("SELECT courseID FROM belongs_to WHERE userID = ? AND documentID = ?");
+              $course_query->bind_param("ii",$userid,$id);
+              $course_query->execute();
+              $result2 = $course_query->get_result();
               list($courseID) = mysqli_fetch_array($result2);
             ?>
             <div id="docEditForm">

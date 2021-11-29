@@ -29,16 +29,19 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     mysqli_begin_transaction($conn);
     try{
       //Insert Document Information
-      $doc_insert_query = "INSERT INTO Document(userID, dateCreated, displayName, fileType, fileName) VALUES ($userid, '$date', '$docName', '$file_type', '$filename')";
-      $result = mysqli_query($conn, $doc_insert_query) or die('Error, doc insert query failed');
+      $doc_insert_query = $conn->prepare("INSERT INTO Document(userID, dateCreated, displayName, fileType, fileName) VALUES (?, ?, ?, ?, ?)");
+      $doc_insert_query->bind_param("issss", $userid, $date, $docName, $file_type, $filename);
+      $doc_insert_query->execute();
 
       $currentDocID = mysqli_insert_id($conn);
 
       //Need to insert file contents into the File Table
 
       //first find if it's already in the file table
-      $search_file_query = "SELECT * FROM File WHERE fileName = '$filename'";
-      $search_result = mysqli_query($conn, $search_file_query);
+      $search_file_query = $conn->prepare("SELECT * FROM File WHERE fileName = ?");
+      $search_file_query->bind_param("s", $filename);
+      $search_file_query->execute();
+      $search_result = $search_file_query->get_result();
       if($search_result->num_rows == 0) {
         $contents_insert_query = "INSERT INTO File(fileName, fileType, fileContents) VALUES ('$filename', '$file_type', '$content')";
         $result2 = mysqli_query($conn, $contents_insert_query) or die(mysqli_error($conn));

@@ -13,10 +13,12 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 	$id = $_POST['documentID'];
     $userid = $_SESSION['userID'];
 
-	$query = "UPDATE Document SET displayName = '$docName', dateCreated = '$docDate' WHERE documentID = $id AND userID = $userid";
-	$updateBelongsToQuery = "UPDATE belongs_to SET courseID = '$courseid' WHERE documentID = $id AND userID = $userid";
-	$result = mysqli_query($conn,$query) or die('Error, query failed');
-	$result2 = mysqli_query($conn,$updateBelongsToQuery) or die('Error, query failed');
+	$query = $conn->prepare("UPDATE Document SET displayName = ?, dateCreated = ? WHERE documentID = ? AND userID = ?");
+	$query->bind_param("ssii", $docName, $docDate, $id, $userid);
+	$query->execute();
+	$updateBelongsToQuery = $conn->prepare("UPDATE belongs_to SET courseID = ? WHERE documentID = ? AND userID = ?");
+	$updateBelongsToQuery->bind_param("sii", $courseid, $id, $userid);
+	$updateBelongsToQuery->execute();
 }
 header("Location: ../views/docview.php");
 mysqli_close($conn);

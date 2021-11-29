@@ -1,3 +1,5 @@
+<?php include_once '../db/isLoggedIn.php'; ?>
+
 <?php
 //Update User
 ini_set('display_errors', 1);
@@ -5,16 +7,9 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require_once '../db/db_settings.php';
 
-
-session_start();
-if (!isset($_SESSION['userID'])) {
-  header('Location: login.php');
-  exit;
-}
 $userID = $_SESSION['userID'];
 
 ?>
-<?php include_once '../db/isLoggedIn.php'; ?>
 
 <!doctype html>
 <html lang="en">
