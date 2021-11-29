@@ -14,6 +14,7 @@ if (!isset($_SESSION['userID'])) {
 $userID = $_SESSION['userID'];
 
 ?>
+<?php include_once '../db/isLoggedIn.php'; ?>
 
 <!doctype html>
 <html lang="en">

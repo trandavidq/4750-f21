@@ -5,6 +5,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require_once '../coursesAPI.php';
+include_once '../db/isLoggedIn.php';
 session_start();
 //Check that user is logged in
 // if (!isset($_SESSION["firstName"])){
