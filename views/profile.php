@@ -51,6 +51,9 @@ $userID = $_SESSION['userID'];
           <li class="nav-item">
             <a class="nav-link" href="./docsearch.php">Document Search</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./logout.php">Logout</a>
+          </li>
         </ul>
       </div>
     </div>

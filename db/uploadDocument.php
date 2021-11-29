@@ -24,8 +24,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     
     if($ext=="png"||$ext=="PNG"||$ext=="JPG"||$ext=="jpg"||$ext=="jpeg"||$ext=="JPEG"
 		||$ext=="pdf"||$ext=="PDF"||$ext=="doc"||$ext=="DOC"||$ext=="docx"||$ext=="DOCX"
-		||$ext=="XLS"||$ext=="xls"||$ext=="XLSX"||$ext=="xlsx"||$ext=="xlsm"||$ext=="XLSM"){
-
+		||$ext=="XLS"||$ext=="xls"||$ext=="XLSX"||$ext=="xlsx"||$ext=="xlsm"||$ext=="XLSM" || $ext=="txt"){
+    
     mysqli_begin_transaction($conn);
     try{
       //Insert Document Information
@@ -41,7 +41,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
       $search_result = mysqli_query($conn, $search_file_query);
       if($search_result->num_rows == 0) {
         $contents_insert_query = "INSERT INTO File(fileName, fileType, fileContents) VALUES ('$filename', '$file_type', '$content')";
-        $result2 = mysqli_query($conn, $contents_insert_query) or die('Error, contents query failed');
+        $result2 = mysqli_query($conn, $contents_insert_query) or die(mysqli_error($conn));
       }
 
       //Need to insert course information into the belongs_to table
