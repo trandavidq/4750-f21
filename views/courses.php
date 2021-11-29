@@ -6,12 +6,6 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require_once '../coursesAPI.php';
 include_once '../db/isLoggedIn.php';
-session_start();
-//Check that user is logged in
-// if (!isset($_SESSION["firstName"])){
-//   header('Location: login.php');
-//   exit;
-// }
 ?>
 
 <head>
@@ -47,6 +41,9 @@ session_start();
           <li class="nav-item">
             <a class="nav-link" href="./docsearch.php">Document Search</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./logout.php">Logout</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -54,7 +51,7 @@ session_start();
   <h1 class="mx-3"> Courses </h1>
   <div class="searchbar">
     <form action="../db/addCourses.php" method="POST">
-      <h3 style="margin-right: 100px;">Choose a course, <?php echo $_SESSION['firstName'] . ' with user id' . $_SESSION['userID'] ?>:</h3>
+      <h3 style="margin-right: 100px;">Choose a course, <?php echo $_SESSION['firstName']?>:</h3>
       <label for="">Course: </label>
       <select name="subject" id="subject">
         <?php

@@ -6,11 +6,8 @@ error_reporting(E_ALL);
 require_once '../db/db_settings.php';
 
 
-session_start();
-if (!isset($_SESSION['userID'])) {
-    header('Location: login.php');
-    exit;
-}
+include_once("../db/isLoggedIn.php");
+
 $userID = $_SESSION['userID'];
 
 ?>
@@ -50,6 +47,9 @@ $userID = $_SESSION['userID'];
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./docsearch.php">Document Search</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./logout.php">Logout</a>
           </li>
         </ul>
       </div>
