@@ -57,7 +57,7 @@
     </div>
   </div>
   <label for="coursename" class="form-label"> Course: </label>
-  <input type="text" id="coursename" name="course" value="Enter Course">
+  <input type="text" id="coursename" name="course" placeholder="Enter Course">
 
   <button type="submit" class="btn btn-success my-2">Go</button>
 
@@ -97,11 +97,11 @@ $userID = $_SESSION['userID'];
 // echo $course;
 //WHERE courseID LIKE ? 
 $get_doc_query = $conn->prepare(
-  "SELECT DISTINCT d.documentID from belongs_to b , Document d
-  WHERE b.userID=d.userID  AND b.userID = $userID
+  "SELECT DISTINCT d.documentID, d.displayName FROM belongs_to b , Document d
+  WHERE b.userID=d.userID  AND b.userID = ?
   AND b.courseID LIKE ? AND d.dateCreated >= ?
   AND d.dateCreated <= ?");
-  $get_doc_query->bind_param("sss",$courseQuery,$startDate,$endDate);
+  $get_doc_query->bind_param("isss",$userID,$courseQuery,$startDate,$endDate);
 /*
     "SELECT d.documentID from belongs_to b , Document d
      WHERE b.userID=d.userID  AND b.userID = 29
@@ -115,7 +115,15 @@ $get_doc_query ->execute();
 
 $result = $get_doc_query->get_result();
 while($row = $result->fetch_array(MYSQLI_NUM)){
-  echo '<a href="docview.php?documentID=', urlencode($row[0]), '">Link<br>';
+  //urlencode($row[0])
+  $url = urlencode($row[0]);
+  echo "<div class=\"card\" style=\"width: 18rem;\">
+  <div class=\"card-body\">
+    <h5 class=\"card-title\">$row[1]</h5>
+    <p class=\"card-text\"></p>
+    <a href=\"docview.php?documentID=$url\" class=\"btn btn-primary\">View Document</a>
+  </div>
+</div>";
 }
 ?>
 
