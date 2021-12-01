@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 </head>
 
-<body>
+<body style="background-image: url(../styles/images/background.jpeg);">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
@@ -46,9 +46,9 @@
   </nav>
 
   <div style="margin-left: 20px; margin-top: 20px">
-    <div>
+    <h1>
         Welcome, <?php echo $_SESSION['firstName'] ?>
-    </div>
+    </h1>
     <a href="logout.php">Logout</a>
   </div>
 

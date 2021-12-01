@@ -10,32 +10,34 @@
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 </head>
 
-<body>
-  <h1>Notemates Login</h1>
-  <div id="login-form">
+<body style="background-image: url(../styles/images/background.jpeg);">
+  <div class="card vertical-center" style="margin: 0 auto; float: none; margin-bottom: 10px; width: 40rem;">
+  <h1 style="margin-left: 10px; margin-top: 10px;">Notemates.</h1>
+  <div id="login-form" style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;">
     <form action="../db/auth.php" method="POST">
-      <div class="form-group">
+      <div class="form-group" style="margin-top: 10px">
         <label>First Name</label>
         <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name">
       </div>
-      <div class="form-group">
+      <div class="form-group" style="margin-top: 10px">
         <label>Last Name</label>
         <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter last name">
       </div>
-      <div class="form-group">
+      <div class="form-group" style="margin-top: 10px">
         <label>Password</label>
         <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
       </div>
-      <div class="form-group">
+      <div class="form-group" style="margin-top: 10px">
         <label>Email</label>
         <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
       </div>
-      <div class="form-group">
+      <div class="form-group" style="margin-top: 10px">
         <label>Phone Number</label>
         <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number">
       </div>
-      <button type="submit" class="btn btn-primary" style="margin-top: 50px;">Submit</button>
+      <button type="submit" class="btn btn-primary" style="margin-top: 40px;">Submit</button>
     </form>
+  </div>
   </div>
   
 </body>

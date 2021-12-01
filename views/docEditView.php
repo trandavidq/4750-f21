@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 </head>
 
-<body>
+<body style="background-image: url(../styles/images/background.jpeg);">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
       <a class="navbar-brand" href="./home.php">Notemates.</i></a>
@@ -80,9 +80,20 @@
                 <form action="../db/docEdit.php" method="POST">
                   <input type="hidden" name="documentID" value="<?=$id?>" /> 
                     <div class="form-group">
-                        <label>Course </label>
-                        <input type="text" class="form-control" id="courseName" name="courseName" placeholder=<?php echo $courseID ?>>
-                    </div>
+                    <label for="">Course </label>
+      <select name="courseName" id="courseName">
+        <?php
+        //Grab course number
+        $get_courseID_query = $conn->prepare("SELECT courseID, courseName FROM Courses;");
+        $get_courseID_query->execute();
+        $result = $get_courseID_query->get_result();
+        while ($class = $result->fetch_array(MYSQLI_NUM)) {
+          $optionName = $class[0] . ': ' . $class[1];
+          echo "<option value = '$class[0]'> $optionName </option>";
+        }
+        ?>
+      </select>
+      </div>
                     <div class="form-group">
                         <label>Document Name </label>
                         <input type="text" class="form-control" id="docName" name="docName" placeholder=<?php echo $docName ?>>

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 </head>
     
-<body>
+<body style="background-image: url(../styles/images/background.jpeg);">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">

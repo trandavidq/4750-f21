@@ -17,7 +17,7 @@ include_once '../db/isLoggedIn.php';
   <link rel="stylesheet" href="../styles/courses.css">
 </head>
 
-<body>
+<body style="background-image: url(../styles/images/background.jpeg);">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
       <a class="navbar-brand" href="./home.php">Notemates.</i></a>
