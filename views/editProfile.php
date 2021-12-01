@@ -19,7 +19,7 @@ $userID = $_SESSION['userID'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <meta charset="utf-8">
     <title>Edit profile</title>
-    <link rel="stylesheet" href="./styles/login.css">
+    <link rel="stylesheet" href="../styles/profile.css">
     <meta name="Profile" content="View and Update your Profile">
     <link rel="stylesheet" href="css/styles.css?v=1.0">
 </head>
@@ -57,25 +57,25 @@ $userID = $_SESSION['userID'];
   </nav>
 
     <div class="card" style="width : 58rem; margin: 0 auto; float: none; margin-bottom: 10px;">
-        <h1>Edit profile:</h1>
+        <h1 class="prof">Edit profile:</h1>
         <form action="../db/editProfile.php" method="POST">
-            <div>
+            <div class="prof">
                 <h4>First name: </h4>
                 <input type="text" name="firstName">
             </div>
-            <div>           
+            <div class="prof">           
                 <h4>Last name: </h4>
                 <input type="text" name="lastName">
             </div>
-            <div>
+            <div class="prof">
                 <h4>Email: </h4>
                 <input type="text" name="email">
             </div>
-            <div>
+            <div class="prof">
                 <h4>Phone: </h4>
                 <input type="text" name="phoneNumber">
             </div>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success" style="margin-top: 10px; margin-bottom: 10px; margin-right: 10px; margin-left: 10px;">Submit</button>
         </form>
 
         

@@ -46,11 +46,11 @@
 
   <div class="card" style="margin-top:15px; margin-bottom:15px;">
   <div class="card-header" style="display: flex; justify: space-between;">
-    <h1><b>Document Viewer</b></h1>
+    <h1><b>Document Editor</b></h1>
   </div>
   <br/>
     <br/>
-    <div class="card text-left hover">
+    <div class="card" style="width : 58rem; margin: 0 auto; float: none; margin-bottom: 10px; margin-top: 10px; background-color: LightGray;">
         <div class="card-body" style="background-color: #D3D3D3;">
             <div style="display: flex; justify-content: space-between;">
                 <h3><b>Document Information</b></h3>
@@ -79,7 +79,7 @@
             <div id="docEditForm">
                 <form action="../db/docEdit.php" method="POST">
                   <input type="hidden" name="documentID" value="<?=$id?>" /> 
-                    <div class="form-group">
+                    <div class="form-group" style="margin-bottom: 10px;">
                     <label for="">Course </label>
       <select name="courseName" id="courseName">
         <?php
@@ -94,7 +94,7 @@
         ?>
       </select>
       </div>
-                    <div class="form-group">
+                    <div class="form-group" style="margin-bottom: 10px;">
                         <label>Document Name </label>
                         <input type="text" class="form-control" id="docName" name="docName" placeholder=<?php echo $docName ?>>
                     </div>

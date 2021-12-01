@@ -18,7 +18,7 @@ $userID = $_SESSION['userID'];
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   <meta charset="utf-8">
   <title>Profile</title>
-  <link rel="stylesheet" href="./styles/login.css">
+  <link rel="stylesheet" href="../styles/profile.css">
   <meta name="Profile" content="View and Update your Profile">
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 </head>
@@ -56,21 +56,21 @@ $userID = $_SESSION['userID'];
   </nav>
 
   <div class="card" style="width : 58rem; margin: 0 auto; float: none; margin-bottom: 10px;">
-    <h1>Profile:</h1>
-    <div name='name'>
+    <h1 class="prof">Profile:</h1>
+    <div class="prof" name='name'>
       <!-- Name -->
       <h4>Name: </h4>
       <p><?php echo ($_SESSION['firstName'] . ' ' . $_SESSION['lastName']); ?></p>
     </div>
-    <div>
+    <div class="prof">
       <h4>Email: </h4>
       <p><?php echo $_SESSION['email']; ?></p>
     </div>
-    <div>
+    <div class="prof">
       <h4>Phone: </h4>
       <p><?php echo $_SESSION['phone']; ?></p>
     </div>
-    <a href="editProfile.php" style="display: inline-block">
+    <a class="prof" href="editProfile.php" style="display: inline-block">
       <button class="btn btn-success">Edit</button>
     </a>
 

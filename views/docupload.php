@@ -47,18 +47,18 @@ include_once("../db/isLoggedIn.php");
   </nav>
 
   <div class="card" style="width : 58rem; margin: 0 auto; float: none; margin-bottom: 10px; margin-top: 10px; background-color: LightGray;">
-  <h1>New Document</h1>
+  <h1 style="margin-top: 10px; margin-bottom: 10px; margin-left: 10px; margin-right: 10px;">New Document</h1>
   <div id="doc-upload-form">
     <form action="../db/uploadDocument.php" method="POST" enctype="multipart/form-data">
-      <div class="form-group">
+      <div class="form-group" style="margin-top: 10px; margin-bottom: 10px; margin-left: 10px; margin-right: 10px;">
         <label>Document Name</label>
         <input type="text" class="form-control" id="docName" name="docName" placeholder="Enter document name">
       </div>
-      <div class="form-group">
+      <div class="form-group" style="margin-top: 10px; margin-bottom: 10px; margin-left: 10px; margin-right: 10px;">
         <label>Subject</label>
         <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter subject">
       </div>
-      <div class="form-group">
+      <div class="form-group" style="margin-top: 10px; margin-bottom: 10px; margin-left: 10px; margin-right: 10px;">
                     <label for="">Course </label>
       <select name="courseName" id="courseName">
         <?php
@@ -74,15 +74,15 @@ include_once("../db/isLoggedIn.php");
         ?>
       </select>
       </div>
-      <div style="margin-top: 10px; margin-bottom: 10px; "class="form-group">
+      <div class="form-group" style="margin-top: 10px; margin-bottom: 10px; margin-left: 10px; margin-right: 10px;">
         <label>Date</label>
         <input type="date" id="date" name="date" value= "09/01/2021" min="1950-01-01" max="2050-01-01"/>
       </div>
-      <div class="form-group">
+      <div class="form-group" style="margin-top: 10px; margin-bottom: 10px; margin-left: 10px; margin-right: 10px;">
         <label>Upload document</label>
         <input type="file" class="form-control" id="file" name="file">
       </div>
-      <button type="submit" class="btn btn-primary" style="margin-top: 50px;">Save</button>
+      <button type="submit" class="btn btn-primary" style="margin-top: 20px; margin-bottom: 10px; margin-left: 10px; margin-right: 10px;">Save</button>
     </form>
   </div>
 </div>

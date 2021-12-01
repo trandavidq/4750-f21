@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   <meta charset="utf-8">
   <title>Profile</title>
-  <link rel="stylesheet" href="./styles/docview.css">
+  <link rel="stylesheet" href="../styles/profile.css">
   <meta name="Home" content="Home Page for Application">
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 </head>
@@ -51,10 +51,10 @@
   <br/>
     <br/>
     <div class="card text-left hover">
-        <div class="card-body" style="background-color: #D3D3D3;">
+        <div class="card" style="width : 58rem; margin: 0 auto; float: none; margin-bottom: 10px; margin-top: 10px; background-color: LightGray;">
             <div style="display: flex; justify-content: space-between;">
-                <h3><b>Document Information</b></h3>
-                <a href="docsearch.php">Back To Document Search</a>
+                <h3 style="margin-top: 10px; margin-bottom: 10px; margin-left: 10px; margin-right: 10px;"><b>Document Information</b></h3>
+                <a class="prof" href="docsearch.php">Back To Document Search</a>
             </div>
             <?php 
               include_once '../db/db_settings.php';
@@ -74,18 +74,18 @@
               }
             ?>
             <form action="docEditView.php?documentID=<?php echo $id ?>" method="post">
-              <button type="submit" class="btn btn-primary" style="margin-top: 10px; background-color: green; border-color: green;">Edit</button>
+              <button style="margin-top: 10px; margin-bottom: 10px; margin-left: 10px; margin-right: 10px; background-color: green; border-color: green;" type="submit" class="btn btn-primary">Edit</button>
             </form>
             <form action="../db/deleteDoc.php" method="post">
               <input type="hidden" name="documentID" value="<?=$id?>" />
-              <button type="submit" class="btn btn-primary" style="margin-top: 10px; background-color: red; border-color: red;" onclick="return confirm('Are you sure you want to delete this document?');">Delete</button>
+              <button type="submit" class="btn btn-primary" style="margin-top: 10px; margin-bottom: 10px; margin-left: 10px; margin-right: 10px; background-color: red; border-color: red;" onclick="return confirm('Are you sure you want to delete this document?');">Delete</button>
             </form>
-            <p style="margin-top: 20px;">Course: <?php echo $courseID ?></p>
-            <p>Name: <?php echo $dName ?></p>
-            <p>Date: <?php echo $date ?></p>
+            <p class="prof">Course: <b><?php echo $courseID ?></b></p>
+            <p class="prof">Name: <b><?php echo $dName ?></b></p>
+            <p class="prof">Date: <b><?php echo $date ?></b></p>
             <form action="../db/downloadFile.php" method="post">
               <input type="hidden" name="documentID" value="<?=$id?>" />
-              <button type="submit" class="btn btn-primary">Download</button>
+              <button type="submit" class="btn btn-primary" style="margin-top: 10px; margin-bottom: 10px; margin-left: 10px; margin-right: 10px;">Download</button>
             </form>
         </div>
       </div>

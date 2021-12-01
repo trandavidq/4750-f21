@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 </head>
     
-<body style="background-image: url(../styles/images/background.jpeg);">
+<body style="background-image: url(../styles/images/background.jpeg); margin-bottom: 50px;">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
@@ -119,7 +119,7 @@ $result = $get_doc_query->get_result();
 while($row = $result->fetch_array(MYSQLI_NUM)){
   //urlencode($row[0])
   $url = urlencode($row[0]);
-  echo "<div class=\"card\" style=\"width: 18rem;\">
+  echo "<div class=\"card\" style=\"width: 18rem; margin-bottom: 10px; margin-left: 10px; margin-right: 10px;\">
   <div class=\"card-body\">
     <h5 class=\"card-title\">$row[1]</h5>
     <p class=\"card-text\"></p>
