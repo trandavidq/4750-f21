@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $_SESSION['phone'] = $_POST['phone'];
 }
 
-header('Location: ../views/home.php');
+header('Location: ../views/intermediate.php');
 exit;
 
 ?>

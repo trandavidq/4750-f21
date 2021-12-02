@@ -4,17 +4,17 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-require_once '../coursesAPI.php';
 include_once '../db/isLoggedIn.php';
+include_once '../db/db_settings.php';
 ?>
 
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="./styles/courses.css">
   <title>Course Search</title>
   <meta name="Courses" content="Page should allow for searching of courses">
-  <link rel="stylesheet" href="../styles/courses.css">
 </head>
 
 <body style="background-image: url(../styles/images/background.jpeg);">
@@ -49,9 +49,10 @@ include_once '../db/isLoggedIn.php';
     </div>
   </nav>
   <h1 class="mx-3"> Courses </h1>
-  <div class="searchbar">
-    <form action="../db/addCourses.php" method="POST">
-      <h3 style="margin-right: 100px;">Choose a course, <?php echo $_SESSION['firstName']?>:</h3>
+  <div class="card">
+    <form class="spec" action="../db/addCourses.php" method="POST">
+      <h3 style="margin-top: 10px; margin-bottom: 10px; margin-left: 10px; margin-right: 10px;">Choose a course, <?php echo $_SESSION['firstName']?>:</h3>
+      <div style="margin-top: 10px; margin-bottom: 10px; margin-left: 10px; margin-right: 10px;">
       <label for="">Course: </label>
       <select name="subject" id="subject">
         <?php
@@ -66,13 +67,21 @@ include_once '../db/isLoggedIn.php';
         ?>
       </select>
       <button class="btn btn-success" type="submit">Add</button>
+      </div>
     </form>
   </div>
 
   <hr>
   <div>
     <!-- Display all current courses -->
-    Current list of courses:
+    <div style="background-color: white;">
+    <div style="display: flex; justify-content: space-between; margin-top: 10px; margin-bottom: 10px; margin-left: 10px; margin-right: 10px;">
+        <h1>My Courses</h1>
+        <form style="margin-top: 10px" action="../db/exportCourses.php">
+          <button type="submit" class="btn btn-primary">Download Course List</button>
+        </form>
+    </div>
+    </div>
     <br>
     <?php
     $get_taken_courses_query = $conn->prepare('SELECT courseID from takes WHERE userID = ?');
@@ -97,10 +106,6 @@ include_once '../db/isLoggedIn.php';
     }
     ?>
   </div>
-
-  <form action="../db/exportCourses.php">
-      <button type="submit" class="btn btn-primary">Download Course List</button>
-  </form>
 </body>
 
 <footer>
