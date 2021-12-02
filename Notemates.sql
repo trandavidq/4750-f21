@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 29, 2021 at 09:14 PM
+-- Generation Time: Dec 02, 2021 at 04:14 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -44,7 +44,8 @@ INSERT INTO `belongs_to` (`userID`, `documentID`, `courseID`) VALUES
 (39, 27, 'CS2150'),
 (39, 28, 'CS2150'),
 (39, 29, 'CS2150'),
-(33, 13, 'CS3330');
+(33, 13, 'CS3330'),
+(42, 39, 'ECON8430');
 
 -- --------------------------------------------------------
 
@@ -334,6 +335,7 @@ INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
 ('ARCH6231', 'Building Workshop I', 'ARCH'),
 ('ARCH6261', 'Building Workshop II', 'ARCH'),
 ('ARCH6262', 'Lecture Series Reading Group', 'ARCH'),
+('ARCH6264', 'Lec Series Reading Group II', 'ARCH'),
 ('ARCH6500', 'Special Topics in Architecture', 'ARCH'),
 ('ARCH7010', 'Foundation Studio III', 'ARCH'),
 ('ARCH7020', 'Foundation Studio IV', 'ARCH'),
@@ -1127,9 +1129,9 @@ INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
 ('DANC3559', 'New Course:  DANC', 'DANC'),
 ('DANC3640', 'Dance for the Camera', 'DANC'),
 ('DANC4220', 'Modern/Contemporary III', 'DANC'),
-('DANC4993', 'Independent Study: Dance', 'DANC'),
-('DEM7000', 'Democracy Sem:Dem,War,Violence', 'DEM');
+('DANC4993', 'Independent Study: Dance', 'DANC');
 INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
+('DEM7000', 'Democracy Sem:Dem,War,Violence', 'DEM'),
 ('DEM7001', 'Democracy Seminar II', 'DEM'),
 ('DEM7500', 'Democracy Seminar I', 'DEM'),
 ('DH8000', 'Practicum Digital Humanities', 'DH'),
@@ -2180,9 +2182,9 @@ INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
 ('GBUS8011', 'Ambicultural Strategy', 'GBUS'),
 ('GBUS8012', 'Deviant Marketing', 'GBUS'),
 ('GBUS8013', 'Strategic Corporate Governance', 'GBUS'),
-('GBUS8014', 'Strategic Thinking', 'GBUS'),
-('GBUS8015', 'Behavioral Decision Making', 'GBUS');
+('GBUS8014', 'Strategic Thinking', 'GBUS');
 INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
+('GBUS8015', 'Behavioral Decision Making', 'GBUS'),
 ('GBUS8016', 'Strat Intuition East Philosphy', 'GBUS'),
 ('GBUS8018', 'Econ Inequality & Soc Mobility', 'GBUS'),
 ('GBUS8019', 'Defining Moments', 'GBUS'),
@@ -2322,6 +2324,7 @@ INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
 ('GBUS8763', 'Gales of Creative Destruction', 'GBUS'),
 ('GBUS8800', 'Operations Strategy', 'GBUS'),
 ('GBUS8830', 'Supply Chain Management', 'GBUS'),
+('GBUS8860', 'Sustainability & Bus Law', 'GBUS'),
 ('GBUS8920', 'Global Collab Uncertain World', 'GBUS'),
 ('GBUS8925', 'What Would I Have Done?', 'GBUS'),
 ('GBUS8926', 'Business and Climate Change', 'GBUS'),
@@ -2625,6 +2628,7 @@ INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
 ('HIEA3141', 'Pol & Soc Thought Modern China', 'HIEA'),
 ('HIEA3162', 'Historical China and the World', 'HIEA'),
 ('HIEA3172', 'The Japanese Empire', 'HIEA'),
+('HIEA3321', 'China and the Cold War', 'HIEA'),
 ('HIEA3323', 'China and the United States', 'HIEA'),
 ('HIEA3559', 'New Course: HIEA', 'HIEA'),
 ('HIEA4501', 'Seminar in East Asian History', 'HIEA'),
@@ -3022,11 +3026,13 @@ INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
 ('LAR8320', 'Professional Practice', 'LAR'),
 ('LAR8800', 'Teaching Experience', 'LAR'),
 ('LASE2510', 'Topics in the Liberal Arts', 'LASE'),
+('LASE2515', 'A&S Skills AcceleratorCatalyst', 'LASE'),
 ('LASE2559', 'New Course: LASE', 'LASE'),
 ('LASE3110', 'Analysis and Research', 'LASE'),
 ('LASE3111', 'Skills of Scholarship', 'LASE'),
 ('LASE3200', 'Humans of Capitalism', 'LASE'),
 ('LASE3400', 'Writing and the World of Work', 'LASE'),
+('LASE3510', 'Topics in the Liberal Arts', 'LASE'),
 ('LASE3559', 'New Course:  LASE', 'LASE'),
 ('LAST2050', 'Interdisciplinary Seminar', 'LAST'),
 ('LAST4993', 'Majors Thesis, Ind Studies', 'LAST'),
@@ -3249,13 +3255,13 @@ INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
 ('LAW8620', 'Patent and Licensing Clinic', 'LAW'),
 ('LAW8621', 'Adv Patent & Licensing Clinic', 'LAW'),
 ('LAW8622', 'Prosecution Clinic (YR)', 'LAW'),
-('LAW8623', 'Prosecution Clinic (YR)', 'LAW'),
+('LAW8623', 'Prosecution Clinic (YR)', 'LAW');
+INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
 ('LAW8624', 'Supreme Crt Litigatn Clin (YR)', 'LAW'),
 ('LAW8625', 'Supreme Crt Litigatn Clin (YR)', 'LAW'),
 ('LAW8628', 'Innocence Project Clinic (YR)', 'LAW'),
 ('LAW8629', 'Innocence Project Clinic (YR)', 'LAW'),
-('LAW8632', 'Nonprofit Clinic (YR)', 'LAW');
-INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
+('LAW8632', 'Nonprofit Clinic (YR)', 'LAW'),
 ('LAW8633', 'Nonprofit Clinic (YR)', 'LAW'),
 ('LAW8634', 'First Amendment Clinic (YR)', 'LAW'),
 ('LAW8635', 'First Amendment Clinic (YR)', 'LAW'),
@@ -3561,6 +3567,7 @@ INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
 ('MAE4690', 'Spacecraft Design I', 'MAE'),
 ('MAE4700', 'Spacecraft Design II', 'MAE'),
 ('MAE4710', 'Mechatronics', 'MAE'),
+('MAE4720', 'Advanced Mechatronics', 'MAE'),
 ('MAE4730', 'Intro to Automatic Controls', 'MAE'),
 ('MAE6020', 'Continuum Mechanics', 'MAE'),
 ('MAE6070', 'Theory of Elasticity', 'MAE'),
@@ -4087,6 +4094,7 @@ INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
 ('PERS3010', 'Advanced Persian I', 'PERS'),
 ('PERS3020', 'Advanced Persian', 'PERS'),
 ('PERS3029', 'Language House Conversation', 'PERS'),
+('PERS4993', 'Independent Study in Persian', 'PERS'),
 ('PERS8993', 'Independent Study in Persian', 'PERS'),
 ('PETR2559', 'New Course: PETR', 'PETR'),
 ('PETR3320', 'LifeNarr&IranWmnWrtrs', 'PETR'),
@@ -4312,15 +4320,15 @@ INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
 ('PLAD4960', 'Distinguished Majors Thesis', 'PLAD'),
 ('PLAD4961', 'Thesis Seminar for DMP Pt. 2', 'PLAD'),
 ('PLAD4990', 'Honors Proseminar', 'PLAD'),
-('PLAD4999', 'Senior Thesis', 'PLAD'),
+('PLAD4999', 'Senior Thesis', 'PLAD');
+INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
 ('PLAD5993', 'Independent Study', 'PLAD'),
 ('PLAD7090', 'Rsch Methods & Design Poli Sci', 'PLAD'),
 ('PLAD7100', 'Politic Rsch Quantitat Methods', 'PLAD'),
 ('PLAD7500', 'Topics in Politics', 'PLAD'),
 ('PLAD7750', 'Supervised Research I', 'PLAD'),
 ('PLAD8120', 'Qualitative and Mixed Methods', 'PLAD'),
-('PLAD8310', 'Adv Quantitative Apps PoliSci', 'PLAD');
-INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
+('PLAD8310', 'Adv Quantitative Apps PoliSci', 'PLAD'),
 ('PLAD8320', 'Adv Topics Multivariate Analys', 'PLAD'),
 ('PLAD8500', 'Topics in Political Science', 'PLAD'),
 ('PLAD8750', 'Supervised Research II', 'PLAD'),
@@ -4936,6 +4944,7 @@ INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
 ('SOC8410', 'Race & Ethnicity', 'SOC'),
 ('SOC8998', 'Non-Topical Rsch, Masters Prep', 'SOC'),
 ('SOC8999', 'Non-Topical Research, Masters', 'SOC'),
+('SOC9010', 'Directed Reading', 'SOC'),
 ('SOC9998', 'Non-Topical Rsch,Doctoral Prep', 'SOC'),
 ('SOC9999', 'Non-Topical Research, Doctoral', 'SOC'),
 ('SPAN1060', 'Accelerated Elementary Spanish', 'SPAN'),
@@ -5042,6 +5051,7 @@ INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
 ('STAT9998', 'Non-Topical Rsch,Doctoral Prep', 'STAT'),
 ('STAT9999', 'Non-Topical Research, Doctoral', 'STAT'),
 ('STS1500', 'Sci Tech & Contemp Issues', 'STS'),
+('STS1501', 'Special Topics Engr & Society', 'STS'),
 ('STS2050', 'Sustainable Energy Systems', 'STS'),
 ('STS2500', 'S & T in Soc & Global Context', 'STS'),
 ('STS2620', 'Science & Tech Public Policy', 'STS'),
@@ -5052,6 +5062,7 @@ INSERT INTO `Courses` (`courseID`, `courseName`, `department`) VALUES
 ('STS2850', 'Government & Entrepreneurship', 'STS'),
 ('STS2993', 'Independent Study: Tech & Soc', 'STS'),
 ('STS3020', 'Science and Technology Policy', 'STS'),
+('STS3210', 'Clean Energy Materials', 'STS'),
 ('STS3500', 'Adv Topcs Technology & Society', 'STS'),
 ('STS4500', 'STS and Engineering Practice', 'STS'),
 ('STS4600', 'Engr Ethcs Prof Responsibility', 'STS'),
@@ -5208,15 +5219,14 @@ CREATE TABLE `Document` (
 --
 
 INSERT INTO `Document` (`documentID`, `userID`, `dateCreated`, `displayName`, `fileType`, `fileName`) VALUES
-(1, 29, '2000-1-1', 'someName', 'application/pdf', 'someFile.pdf'),
-(2, 29, '1/1/2000', 'someName', 'application/pdf', 'someFile.pdf'),
 (12, 33, '2021-11-23', 'theNewestIteration', 'application/pdf', 'dbTestFile2.pdf'),
 (13, 33, '2021-11-09', 'upload2', 'application/pdf', 'dbTestFile2.pdf'),
 (22, 35, '2021-11-28', 'AAS', 'text/plain', 'test.txt'),
 (23, 35, '2021-11-28', 'CS2110', 'application/pdf', 'B Plus P 2.pdf'),
 (27, 39, '2021-11-09', 'CS2150', 'text/plain', 'test.txt'),
 (28, 39, '2021-11-03', 'CS47', 'text/plain', 'test.txt'),
-(29, 39, '2021-11-22', 'AAS', 'application/pdf', 'B Plus P 2.pdf');
+(29, 39, '2021-11-22', 'AAS', 'application/pdf', 'B Plus P 2.pdf'),
+(39, 42, '2021-12-01', 'Sample doc 2', 'text/plain', 'test.txt');
 
 -- --------------------------------------------------------
 
@@ -5315,18 +5325,32 @@ INSERT INTO `takes` (`userID`, `courseID`) VALUES
 (33, 'CS2150'),
 (33, 'CS3240'),
 (35, 'AAS1010'),
+(35, 'AAS2224'),
 (35, 'AMST4999'),
+(35, 'COMM3230'),
+(35, 'ECON4240'),
 (36, 'AAS1020'),
 (37, 'AAS2559'),
 (38, 'ARAD4559'),
 (38, 'CS2102'),
 (39, 'AAS4070'),
 (39, 'ACCT2020'),
-(39, 'CS2150');
+(39, 'CS2150'),
+(40, 'AMST3001'),
+(40, 'ANTH5475'),
+(42, 'ECON8430'),
+(42, 'EDHS8310');
 
 --
 -- Triggers `takes`
 --
+DELIMITER $$
+CREATE TRIGGER `removeDocs` AFTER DELETE ON `takes` FOR EACH ROW BEGIN
+DELETE FROM belongs_to WHERE userID = old.userID and courseID = old.courseID;
+DELETE FROM Document WHERE documentID NOT IN (SELECT documentID FROM belongs_to);
+END
+$$
+DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `verifyExists` BEFORE INSERT ON `takes` FOR EACH ROW BEGIN
 		IF new.courseID not in (
@@ -5383,7 +5407,10 @@ INSERT INTO `User` (`userID`, `password`, `firstName`, `lastName`) VALUES
 (36, '$2y$10$hMBhhlummPkzAdR/OtJD5eCF.DI94sXq18dO4dLbkQfW1jsWN2Xai', 'Whitney', 'Houston'),
 (37, '$2y$10$49ZZRr29z1r63XlkZxli2.w0c.BhUoH5z6hkyMhdwYHIdJpXryLaq', 'Ryan', 'Pope'),
 (38, '$2y$10$vo4JYzfrs3ENPE4boJg.GuxrM.VAG1MeEMAjMpBm/K0acKwI3BYYu', 'Cam', 'Tanaka'),
-(39, '$2y$10$E78GNmjeTh16y5EeWUpSFeduywsn7fpDNcuxgTKeS1lFjxTrkARNe', 'Ryan', 'Kardy');
+(39, '$2y$10$E78GNmjeTh16y5EeWUpSFeduywsn7fpDNcuxgTKeS1lFjxTrkARNe', 'Ryan', 'Kardy'),
+(40, '$2y$10$0PE6qjF8XSFjW55rTtBqIOYiHFAWb/7ZQFxwGlsbOqd/xC2Vb6i5C', 'Justin', 'Magill'),
+(41, '$2y$10$ceF8GsJh9PyEwmGjVmLlWeb7MB7TvXyJGQkD0hA9ekOTch7.l6FXW', 'Justin', 'Bieber'),
+(42, '$2y$10$z3RnvOxxWxuORrlXHDS.0uRqpwOu26lQX7E3SAu6KqCcjZxHtcbmq', 'Jacob', 'Soberaa');
 
 -- --------------------------------------------------------
 
@@ -5403,11 +5430,14 @@ CREATE TABLE `User_email` (
 INSERT INTO `User_email` (`userID`, `email`) VALUES
 (34, ''),
 (32, 'arianagrande@music.biz'),
+(41, 'bieber@gmail.com'),
 (30, 'crm6zg@virginia.edu'),
 (27, 'dqt5vt@virginia.edu'),
 (31, 'kimkardashianwest@kuwtk.gov'),
 (28, 'km5qte@virginia.edu'),
+(40, 'magill@gmail.com'),
 (29, 'rrg5kq@virginia.edu'),
+(42, 'sobers@yahoo.nety'),
 (33, 'someemail.com'),
 (37, 'trandavid@gmail.com'),
 (36, 'trandavidq@gmail.com'),
@@ -5442,7 +5472,10 @@ INSERT INTO `User_phone` (`userID`, `phoneNumber`) VALUES
 (36, '7725386884'),
 (37, '7725386884'),
 (38, '7725386884'),
-(39, '7725386884');
+(39, '7725386884'),
+(40, '7725386883'),
+(41, '7725386884'),
+(42, '7725386883');
 
 --
 -- Indexes for dumped tables
@@ -5527,25 +5560,25 @@ ALTER TABLE `User_phone`
 -- AUTO_INCREMENT for table `Document`
 --
 ALTER TABLE `Document`
-  MODIFY `documentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `documentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `User`
 --
 ALTER TABLE `User`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'userID is primary key', AUTO_INCREMENT=40;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'userID is primary key', AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `User_email`
 --
 ALTER TABLE `User_email`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `User_phone`
 --
 ALTER TABLE `User_phone`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- Constraints for dumped tables

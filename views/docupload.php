@@ -64,11 +64,12 @@ include_once("../db/isLoggedIn.php");
         <?php
         //Grab course number
         require_once '../db/db_settings.php';
-        $get_courseID_query = $conn->prepare("SELECT courseID, courseName FROM Courses;");
+        $get_courseID_query = $conn->prepare("SELECT courseID FROM takes where userID = ?;");
+        $get_courseID_query ->bind_param("i",$_SESSION['userID']);
         $get_courseID_query->execute();
         $result = $get_courseID_query->get_result();
         while ($class = $result->fetch_array(MYSQLI_NUM)) {
-          $optionName = $class[0] . ': ' . $class[1];
+          $optionName = $class[0];
           echo "<option value = '$class[0]'> $optionName </option>";
         }
         ?>

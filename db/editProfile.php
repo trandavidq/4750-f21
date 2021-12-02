@@ -29,5 +29,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $_SESSION['email'] = $email;
     $_SESSION['phone'] = $phone;
 }
-header('Location: ../views/editProfile.php');
+header('Location: ../views/profile.php');
 ?>

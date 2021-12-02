@@ -1,9 +1,10 @@
 <?php
 //This file adds classes to database
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-require_once '../coursesAPI.php';
+require_once ('db_settings.php');
 session_start();
 $courseID= $_POST['subject'];
 
